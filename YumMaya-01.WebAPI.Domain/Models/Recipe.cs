@@ -17,4 +17,6 @@ public sealed class Recipe
     public string? MainImagePath { get; set; }
     public string? PreviewImagePath { get; set; }
     public string? ReelPath { get; set; }
+    public ICollection<RecipeTag> RecipeTags { get; set; } = new List<RecipeTag>();
+    public IEnumerable<Tag> Tags => RecipeTags.Select(rt => rt.Tag);
 }
