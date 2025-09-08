@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.13.35919.96 d17.13
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YumMaya-01.WebAPI.API", "YumMaya-01.WebAPI.API\YumMaya-01.WebAPI.API.csproj", "{64D990F9-2E42-4F59-8437-BCAA6BB2F78A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{64D990F9-2E42-4F59-8437-BCAA6BB2F78A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{64D990F9-2E42-4F59-8437-BCAA6BB2F78A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{64D990F9-2E42-4F59-8437-BCAA6BB2F78A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{64D990F9-2E42-4F59-8437-BCAA6BB2F78A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {252C26AA-90FD-4E59-AB59-CDB7CA782E9F}
+	EndGlobalSection
+EndGlobal
