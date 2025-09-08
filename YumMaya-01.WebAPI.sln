@@ -1,9 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.13.35919.96 d17.13
+VisualStudioVersion = 17.13.35919.96
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YumMaya-01.WebAPI.API", "YumMaya-01.WebAPI.API\YumMaya-01.WebAPI.API.csproj", "{64D990F9-2E42-4F59-8437-BCAA6BB2F78A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YumMaya-01.WebAPI.Application", "YumMaya-01.WebAPI.Application\YumMaya-01.WebAPI.Application.csproj", "{18B577B4-894A-43EB-99EE-2B93DE649986}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YumMaya-01.WebAPI.Domain", "YumMaya-01.WebAPI.Domain\YumMaya-01.WebAPI.Domain.csproj", "{D30ED58E-53BB-4962-ABCD-0FD4893AC721}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YumMaya-01.WebAPI.Infrastructure", "YumMaya-01.WebAPI.Infrastructure\YumMaya-01.WebAPI.Infrastructure.csproj", "{0676E0C4-6266-41D3-B49A-ABD211E245B6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +21,18 @@ Global
 		{64D990F9-2E42-4F59-8437-BCAA6BB2F78A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{64D990F9-2E42-4F59-8437-BCAA6BB2F78A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{64D990F9-2E42-4F59-8437-BCAA6BB2F78A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{18B577B4-894A-43EB-99EE-2B93DE649986}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{18B577B4-894A-43EB-99EE-2B93DE649986}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{18B577B4-894A-43EB-99EE-2B93DE649986}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{18B577B4-894A-43EB-99EE-2B93DE649986}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D30ED58E-53BB-4962-ABCD-0FD4893AC721}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D30ED58E-53BB-4962-ABCD-0FD4893AC721}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D30ED58E-53BB-4962-ABCD-0FD4893AC721}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D30ED58E-53BB-4962-ABCD-0FD4893AC721}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0676E0C4-6266-41D3-B49A-ABD211E245B6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0676E0C4-6266-41D3-B49A-ABD211E245B6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0676E0C4-6266-41D3-B49A-ABD211E245B6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0676E0C4-6266-41D3-B49A-ABD211E245B6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

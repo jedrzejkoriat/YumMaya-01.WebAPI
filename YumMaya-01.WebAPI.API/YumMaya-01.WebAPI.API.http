@@ -1,6 +1,0 @@
-@YumMaya_01.WebAPI.API_HostAddress = http://localhost:5024
-
-GET {{YumMaya_01.WebAPI.API_HostAddress}}/weatherforecast/
-Accept: application/json
-
-###
