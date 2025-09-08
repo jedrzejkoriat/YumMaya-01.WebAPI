@@ -5,7 +5,7 @@ namespace YumMaya_01.WebAPI.Infrastructure;
 
 public sealed class AppDbContext : DbContext
 {
-    public AppDbContext(DbContextOptions options) : base(options) { }
+    public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
 
     protected override void OnModelCreating(ModelBuilder builder)
     {
@@ -78,6 +78,8 @@ public sealed class AppDbContext : DbContext
 
         builder.Entity<RecipeTag>()
             .HasIndex(rt => rt.RecipeId);
+
+        base.OnModelCreating(builder);
     }
 
     public DbSet<Recipe> Recipes { get; set; }

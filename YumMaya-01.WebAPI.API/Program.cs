@@ -1,11 +1,11 @@
+using YumMaya_01.WebAPI.Infrastructure.Configuration;
+
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddSqliteConnection(builder.Configuration);
 
 var app = builder.Build();
 

@@ -1,4 +1,5 @@
-﻿using YumMaya_01.WebAPI.Domain.Enums;
+﻿using System.ComponentModel.DataAnnotations.Schema;
+using YumMaya_01.WebAPI.Domain.Enums;
 
 namespace YumMaya_01.WebAPI.Domain.Models;
 
@@ -18,5 +19,6 @@ public sealed class Recipe
     public string? PreviewImagePath { get; set; }
     public string? ReelPath { get; set; }
     public ICollection<RecipeTag> RecipeTags { get; set; } = new List<RecipeTag>();
+    [NotMapped]
     public IEnumerable<Tag> Tags => RecipeTags.Select(rt => rt.Tag);
 }
