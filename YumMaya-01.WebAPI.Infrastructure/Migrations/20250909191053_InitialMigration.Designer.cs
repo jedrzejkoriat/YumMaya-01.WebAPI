@@ -11,7 +11,7 @@ using YumMaya_01.WebAPI.Infrastructure;
 namespace YumMaya_01.WebAPI.Infrastructure.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20250908201850_InitialMigration")]
+    [Migration("20250909191053_InitialMigration")]
     partial class InitialMigration
     {
         /// <inheritdoc />
@@ -61,7 +61,7 @@ namespace YumMaya_01.WebAPI.Infrastructure.Migrations
                     b.Property<string>("PreviewImagePath")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("ReelPath")
+                    b.Property<string>("ReelUrl")
                         .HasColumnType("TEXT");
 
                     b.Property<int>("Servings")

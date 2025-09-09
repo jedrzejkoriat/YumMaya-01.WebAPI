@@ -21,4 +21,8 @@
     <ProjectReference Include="..\YumMaya-01.WebAPI.Domain\YumMaya-01.WebAPI.Domain.csproj" PrivateAssets="all" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Migrations\" />
+  </ItemGroup>
+
 </Project>

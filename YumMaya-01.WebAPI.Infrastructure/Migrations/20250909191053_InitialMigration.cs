@@ -27,7 +27,7 @@ namespace YumMaya_01.WebAPI.Infrastructure.Migrations
                     CreatedAt = table.Column<DateTimeOffset>(type: "TEXT", nullable: false),
                     MainImagePath = table.Column<string>(type: "TEXT", nullable: true),
                     PreviewImagePath = table.Column<string>(type: "TEXT", nullable: true),
-                    ReelPath = table.Column<string>(type: "TEXT", nullable: true)
+                    ReelUrl = table.Column<string>(type: "TEXT", nullable: true)
                 },
                 constraints: table =>
                 {

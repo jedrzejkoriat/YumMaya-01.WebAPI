@@ -58,7 +58,7 @@ namespace YumMaya_01.WebAPI.Infrastructure.Migrations
                     b.Property<string>("PreviewImagePath")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("ReelPath")
+                    b.Property<string>("ReelUrl")
                         .HasColumnType("TEXT");
 
                     b.Property<int>("Servings")

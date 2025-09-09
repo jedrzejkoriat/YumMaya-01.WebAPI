@@ -1,4 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
+using YumMaya_01.WebAPI.Application.Contracts.Services;
+using YumMaya_01.WebAPI.Application.DTOs.Recipes;
 
 namespace YumMaya_01.WebAPI.API.Controllers;
 
@@ -9,9 +12,11 @@ namespace YumMaya_01.WebAPI.API.Controllers;
 [ApiController]
 public class RecipesController : ControllerBase
 {
-    public RecipesController()
-    {
+    private readonly IRecipeService _recipeService;
 
+    public RecipesController(IRecipeService recipeService)
+    {
+        _recipeService = recipeService;
     }
 
     // GET: api/recipes
@@ -20,9 +25,9 @@ public class RecipesController : ControllerBase
     /// </summary>
     /// <returns>List of Recipes</returns>
     [HttpGet]
-    public IEnumerable<string> Get()
+    public async Task<ActionResult<IEnumerable<RecipeDto>>> GetRecipes()
     {
-        return new string[] { "value1", "value2" };
+        return Ok(await _recipeService.GetAllRecipesAsync());
     }
 
     // GET api/recipes/{id}
@@ -32,30 +37,33 @@ public class RecipesController : ControllerBase
     /// <param name="id"></param>
     /// <returns>Recipe entity</returns>
     [HttpGet("{id}")]
-    public string Get(int id)
+    public async Task<ActionResult<RecipeDto>> Get(Guid id)
     {
-        return "value";
+        return Ok(await _recipeService.GetRecipeByIdAsync(id));
     }
 
     // POST api/recipes
     /// <summary>
     /// Create Recipe
     /// </summary>
-    /// <param name="value"></param>
+    /// <param name="recipe"></param>
     [HttpPost]
-    public void Post([FromBody] string value)
+    public async Task<ActionResult> Post([FromBody] RecipeCreateDto recipe)
     {
+        var id = await _recipeService.CreateRecipeAsync(recipe);
+        return CreatedAtAction(nameof(Get), new { id }, null);
     }
 
-    // PUT api/recipes/{id}
+    // PUT api/recipes
     /// <summary>
     /// Update Recipe
     /// </summary>
-    /// <param name="id"></param>
-    /// <param name="value"></param>
-    [HttpPut("{id}")]
-    public void Put(int id, [FromBody] string value)
+    /// <param name="recipe"></param>
+    [HttpPut]
+    public async Task<ActionResult> Put([FromBody] RecipeUpdateDto recipe)
     {
+        await _recipeService.UpdateRecipeAsync(recipe);
+        return NoContent();
     }
 
     // DELETE api/recipes/{id}
@@ -64,7 +72,9 @@ public class RecipesController : ControllerBase
     /// </summary>
     /// <param name="id"></param>
     [HttpDelete("{id}")]
-    public void Delete(int id)
+    public async Task<ActionResult> Delete(Guid id)
     {
+        await _recipeService.DeleteRecipeAsync(id);
+        return NoContent();
     }
 }

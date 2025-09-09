@@ -1,3 +1,4 @@
+using YumMaya_01.WebAPI.Application.Configuration;
 using YumMaya_01.WebAPI.Infrastructure.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -6,6 +7,10 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddSqliteConnection(builder.Configuration);
+builder.Services.AddRepositories();
+builder.Services.AddApplicationServices();
+builder.Services.AddApplicationMapper();
+builder.Services.AddDtoValidation();
 
 var app = builder.Build();
 

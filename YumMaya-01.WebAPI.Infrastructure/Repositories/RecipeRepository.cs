@@ -13,11 +13,10 @@ public sealed class RecipeRepository : IRecipeRepository
         _context = context;
     }
 
-    public async Task<Guid> AddAsync(Recipe recipe)
+    public async Task<bool> AddAsync(Recipe recipe)
     {
         await _context.AddAsync(recipe);
-        await _context.SaveChangesAsync();
-        return recipe.Id;
+        return await _context.SaveChangesAsync() > 0;
     }
 
     public async Task<IEnumerable<Recipe>> GetAllAsync()
@@ -28,7 +27,7 @@ public sealed class RecipeRepository : IRecipeRepository
             .ToListAsync();
     }
 
-    public async Task<Recipe> GetByIdAsync(Guid id)
+    public async Task<Recipe> GetAsync(Guid id)
     {
         return await _context.Set<Recipe>()
             .Include(r => r.RecipeTags)
@@ -42,9 +41,10 @@ public sealed class RecipeRepository : IRecipeRepository
         return await _context.SaveChangesAsync() > 0;
     }
 
-    public Task<bool> DeleteAsync(Recipe recipe)
+    public async Task<bool> DeleteAsync(Guid id)
     {
-        _context.Remove(recipe);
-        return Task.FromResult(_context.SaveChanges() > 0);
+        var recipe = await _context.Set<Recipe>().FirstOrDefaultAsync(r => r.Id == id);
+        _context.Set<Recipe>().Remove(recipe);
+        return await _context.SaveChangesAsync() > 0;
     }
 }

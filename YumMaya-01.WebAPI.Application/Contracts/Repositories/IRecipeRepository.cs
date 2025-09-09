@@ -4,9 +4,9 @@ namespace YumMaya_01.WebAPI.Application.Contracts.Repositories;
 
 public interface IRecipeRepository
 {
-    Task<Recipe> GetByIdAsync(Guid id);
+    Task<Recipe> GetAsync(Guid id);
     Task<IEnumerable<Recipe>> GetAllAsync();
-    Task<Guid> AddAsync(Recipe recipe);
+    Task<bool> AddAsync(Recipe recipe);
     Task<bool> UpdateAsync(Recipe recipe);
-    Task<bool> DeleteAsync(Recipe recipe);
+    Task<bool> DeleteAsync(Guid id);
 }
