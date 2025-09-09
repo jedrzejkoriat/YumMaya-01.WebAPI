@@ -16,10 +16,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\YumMaya-01.WebAPI.Application\YumMaya-01.WebAPI.Application.csproj" PrivateAssets="all" />
     <ProjectReference Include="..\YumMaya-01.WebAPI.Infrastructure\YumMaya-01.WebAPI.Infrastructure.csproj" PrivateAssets="all" />
   </ItemGroup>
