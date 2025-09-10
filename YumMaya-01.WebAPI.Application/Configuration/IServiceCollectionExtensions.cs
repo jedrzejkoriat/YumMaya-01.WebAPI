@@ -27,6 +27,7 @@ public static class IServiceCollectionExtensions
     {
         services.AddScoped<IRecipeService, RecipeService>();
         services.AddScoped<ITagService, TagService>();
+        services.AddScoped<IRecipeTagService, RecipeTagService>();
 
         return services;
     }

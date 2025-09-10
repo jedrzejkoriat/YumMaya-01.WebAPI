@@ -14,7 +14,7 @@ public sealed record RecipeCreateDto(
     int Servings,
     string Difficulty,
     string? ReelUrl,
-    IEnumerable<TagDto> Tags);
+    IEnumerable<Guid> TagIds);
 
 public sealed class RecipeCreateDtoValidator : AbstractValidator<RecipeCreateDto>
 {

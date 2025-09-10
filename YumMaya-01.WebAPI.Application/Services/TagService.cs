@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using Microsoft.Extensions.Logging;
-using YumMaya_01.WebAPI.Application.Contracts.Repositories;
+using YumMaya_01.WebAPI.Application.Contracts.Persistence.Repositories;
 using YumMaya_01.WebAPI.Application.Contracts.Services;
 using YumMaya_01.WebAPI.Application.DTOs.Tags;
 

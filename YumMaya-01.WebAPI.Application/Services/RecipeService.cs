@@ -1,7 +1,8 @@
 ﻿using AutoMapper;
 using Microsoft.Extensions.Logging;
 using YumMaya_01.WebAPI.Application.Base;
-using YumMaya_01.WebAPI.Application.Contracts.Repositories;
+using YumMaya_01.WebAPI.Application.Contracts.Persistence;
+using YumMaya_01.WebAPI.Application.Contracts.Persistence.Repositories;
 using YumMaya_01.WebAPI.Application.Contracts.Services;
 using YumMaya_01.WebAPI.Application.DTOs.Recipes;
 using YumMaya_01.WebAPI.Domain.Models;
@@ -13,15 +14,21 @@ public sealed class RecipeService : IRecipeService
     private readonly IRecipeRepository _recipeRepository;
     private readonly IMapper _mapper;
     private readonly ILogger<RecipeService> _logger;
+    private readonly IUnitOfWork _unitOfWork;
+    private readonly IRecipeTagService _recipeTagService;
 
     public RecipeService(
         IRecipeRepository recipeRepository,
         IMapper mapper, 
-        ILogger<RecipeService> logger)
+        ILogger<RecipeService> logger,
+        IUnitOfWork unitOfWork,
+        IRecipeTagService recipeTagService)
     {
         _recipeRepository = recipeRepository;
         _mapper = mapper;
         _logger = logger;
+        _unitOfWork = unitOfWork;
+        _recipeTagService = recipeTagService;
     }
 
     public async Task<Guid> CreateRecipeAsync(RecipeCreateDto recipeCreateDto)
@@ -87,9 +94,21 @@ public sealed class RecipeService : IRecipeService
     {
         _logger.LogInformation("Update Recipe called: {Id}", recipeUpdateDto.Id);
 
-        // Check if operation is successful
-        if (!await _recipeRepository.UpdateAsync(_mapper.Map<Recipe>(recipeUpdateDto)))
+        await _unitOfWork.BeginTransactionAsync();
+
+        try
         {
+            var recipe = _mapper.Map<Recipe>(recipeUpdateDto);
+            recipe.RecipeTags = new List<RecipeTag>();
+
+            await _recipeTagService.SyncRecipeTagsAsync(recipeUpdateDto.Id, recipeUpdateDto.TagIds);
+            await _recipeRepository.UpdateAsync(recipe);
+
+            await _unitOfWork.CommitAsync();
+        }
+        catch
+        {
+            await _unitOfWork.RollbackAsync();
             _logger.LogError("Update Recipe failed: {Id}", recipeUpdateDto.Id);
             throw new OperationFailedException("Update Recipe failed");
         }

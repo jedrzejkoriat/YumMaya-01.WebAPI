@@ -1,8 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using YumMaya_01.WebAPI.Application.Contracts.Repositories;
+using YumMaya_01.WebAPI.Application.Contracts.Persistence.Repositories;
 using YumMaya_01.WebAPI.Domain.Models;
+using YumMaya_01.WebAPI.Infrastructure.Persistence;
 
-namespace YumMaya_01.WebAPI.Infrastructure.Repositories;
+namespace YumMaya_01.WebAPI.Infrastructure.Persistence.Repositories;
 
 public sealed class RecipeRepository : IRecipeRepository
 {
@@ -35,10 +36,10 @@ public sealed class RecipeRepository : IRecipeRepository
             .FirstOrDefaultAsync(r => r.Id == id);
     }
 
-    public async Task<bool> UpdateAsync(Recipe recipe)
+    public async Task UpdateAsync(Recipe recipe)
     {
         _context.Update(recipe);
-        return await _context.SaveChangesAsync() > 0;
+        await _context.SaveChangesAsync();
     }
 
     public async Task<bool> DeleteAsync(Guid id)

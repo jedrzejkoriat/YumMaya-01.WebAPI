@@ -25,7 +25,7 @@ public class RecipesController : ControllerBase
     /// </summary>
     /// <returns>List of Recipes</returns>
     [HttpGet]
-    public async Task<ActionResult<IEnumerable<RecipeDto>>> GetRecipes()
+    public async Task<ActionResult<IEnumerable<RecipeDto>>> Get()
     {
         return Ok(await _recipeService.GetAllRecipesAsync());
     }

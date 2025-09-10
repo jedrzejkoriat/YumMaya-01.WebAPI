@@ -20,14 +20,14 @@ public sealed class MapperConfig : Profile
             .ForMember(dest => dest.Difficulty,
                         opt => opt.MapFrom(src => Enum.Parse<Difficulty>(src.Difficulty, true)))
             .ForMember(dest => dest.RecipeTags,
-                        opt => opt.MapFrom(src => src.Tags.Select(t => new RecipeTag { TagId = t.Id })))
+                        opt => opt.MapFrom(src => src.TagIds.Select(t => new RecipeTag { TagId = t })))
             .ForMember(dest => dest.Tags, opt => opt.Ignore());
 
         CreateMap<RecipeUpdateDto, Recipe>()
             .ForMember(dest => dest.Difficulty,
                        opt => opt.MapFrom(src => Enum.Parse<Difficulty>(src.Difficulty, true)))
             .ForMember(dest => dest.RecipeTags,
-                       opt => opt.MapFrom(src => src.Tags.Select(t => new RecipeTag { TagId = t.Id })))
+                       opt => opt.MapFrom(src => src.TagIds.Select(t => new RecipeTag { TagId = t })))
             .ForMember(dest => dest.Tags, opt => opt.Ignore()); 
 
         CreateMap<Tag, TagDto>();

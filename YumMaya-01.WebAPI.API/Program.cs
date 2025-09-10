@@ -11,6 +11,7 @@ builder.Services.AddRepositories();
 builder.Services.AddApplicationServices();
 builder.Services.AddApplicationMapper();
 builder.Services.AddDtoValidation();
+builder.Services.AddUnitOfWork();
 
 var app = builder.Build();
 

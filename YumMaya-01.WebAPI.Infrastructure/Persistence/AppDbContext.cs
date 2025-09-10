@@ -1,7 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using YumMaya_01.WebAPI.Domain.Models;
+using YumMaya_01.WebAPI.Infrastructure.Configuration.Entities;
 
-namespace YumMaya_01.WebAPI.Infrastructure;
+namespace YumMaya_01.WebAPI.Infrastructure.Persistence;
 
 public sealed class AppDbContext : DbContext
 {
@@ -78,6 +79,8 @@ public sealed class AppDbContext : DbContext
 
         builder.Entity<RecipeTag>()
             .HasIndex(rt => rt.RecipeId);
+
+        builder.ApplyConfiguration(new TagSeedConfiguration());
 
         base.OnModelCreating(builder);
     }

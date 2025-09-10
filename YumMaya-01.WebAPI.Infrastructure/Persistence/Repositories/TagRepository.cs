@@ -1,8 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using YumMaya_01.WebAPI.Application.Contracts.Repositories;
+using YumMaya_01.WebAPI.Application.Contracts.Persistence.Repositories;
 using YumMaya_01.WebAPI.Domain.Models;
+using YumMaya_01.WebAPI.Infrastructure.Persistence;
 
-namespace YumMaya_01.WebAPI.Infrastructure.Repositories;
+namespace YumMaya_01.WebAPI.Infrastructure.Persistence.Repositories;
 public sealed class TagRepository : ITagRepository
 {
     private readonly AppDbContext _context;
