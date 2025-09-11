@@ -1,3 +1,4 @@
+using Microsoft.Extensions.Logging;
 using YumMaya_01.WebAPI.Application.Configuration;
 using YumMaya_01.WebAPI.Infrastructure.Configuration;
 
@@ -15,15 +16,28 @@ builder.Services.AddUnitOfWork();
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
+var logger = app.Services.GetRequiredService<ILogger<Program>>();
+
+try
 {
-    app.UseSwagger();
-    app.UseSwaggerUI();
+    if (app.Environment.IsDevelopment())
+    {
+        app.UseSwagger();
+        app.UseSwaggerUI();
+    }
+
+    app.UseHttpsRedirection();
+    app.UseAuthorization();
+    app.MapControllers();
+
+    logger.LogInformation("Application starting...");
+
+    app.Run();
+
+    logger.LogInformation("Application started successfully.");
 }
-
-app.UseHttpsRedirection();
-app.UseAuthorization();
-app.MapControllers();
-
-app.Run();
+catch (Exception ex)
+{
+    logger.LogCritical(ex, "Application failed to start.");
+    throw;
+}
