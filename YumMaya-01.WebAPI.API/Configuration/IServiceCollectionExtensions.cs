@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.RateLimiting;
+﻿using System.Threading.RateLimiting;
+using Microsoft.AspNetCore.RateLimiting;
 
 namespace YumMaya_01.WebAPI.API.Configuration;
 
@@ -8,10 +9,19 @@ public static class IServiceCollectionExtensions
     {
         services.AddRateLimiter(options =>
         {
-            options.AddFixedWindowLimiter("fixedlimit", opt =>
+            options.GlobalLimiter = PartitionedRateLimiter.Create<HttpContext, string>(httpContext =>
             {
-                opt.Window = TimeSpan.FromSeconds(10);
-                opt.PermitLimit = 500;
+                var ip = httpContext.Connection.RemoteIpAddress?.ToString() ?? "unknown";
+
+                return RateLimitPartition.GetFixedWindowLimiter(
+                    partitionKey: ip,
+                    factory: _ => new FixedWindowRateLimiterOptions
+                    {
+                        PermitLimit = 10,
+                        Window = TimeSpan.FromSeconds(10),
+                        QueueProcessingOrder = QueueProcessingOrder.OldestFirst,
+                        QueueLimit = 0
+                    });
             });
         });
 

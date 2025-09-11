@@ -1,4 +1,5 @@
 using Microsoft.Extensions.Logging;
+using YumMaya_01.WebAPI.API.Configuration;
 using YumMaya_01.WebAPI.Application.Configuration;
 using YumMaya_01.WebAPI.Infrastructure.Configuration;
 
@@ -13,6 +14,7 @@ builder.Services.AddApplicationServices();
 builder.Services.AddApplicationMapper();
 builder.Services.AddDtoValidation();
 builder.Services.AddUnitOfWork();
+builder.Services.AddRequestLimiter();
 
 var app = builder.Build();
 

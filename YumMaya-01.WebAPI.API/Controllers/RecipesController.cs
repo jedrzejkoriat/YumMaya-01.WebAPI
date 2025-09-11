@@ -1,5 +1,6 @@
 ﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.RateLimiting;
 using YumMaya_01.WebAPI.Application.Contracts.Services;
 using YumMaya_01.WebAPI.Application.DTOs.Recipes;
 
@@ -9,6 +10,7 @@ namespace YumMaya_01.WebAPI.API.Controllers;
 /// Controller for managing recipes.
 /// </summary>
 [Route("api/[controller]")]
+[EnableRateLimiting("fixedlimit")]
 [ApiController]
 public class RecipesController : ControllerBase
 {
