@@ -9,6 +9,8 @@ YumMaya-01.WebAPI.API/appsettings.Development.json
 # SQLite
 *.db
 *.sqlite
+*.db-shm
+*.db-wal
 
 # User-specific files
 *.rsuser

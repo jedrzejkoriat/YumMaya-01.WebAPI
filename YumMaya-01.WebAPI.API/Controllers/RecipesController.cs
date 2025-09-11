@@ -1,4 +1,5 @@
 ﻿using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.RateLimiting;
 using YumMaya_01.WebAPI.Application.Contracts.Services;
@@ -50,6 +51,7 @@ public class RecipesController : ControllerBase
     /// </summary>
     /// <param name="recipe"></param>
     [HttpPost]
+    [Authorize]
     public async Task<ActionResult> Post([FromBody] RecipeCreateDto recipe)
     {
         var id = await _recipeService.CreateRecipeAsync(recipe);
@@ -62,6 +64,7 @@ public class RecipesController : ControllerBase
     /// </summary>
     /// <param name="recipe"></param>
     [HttpPut]
+    [Authorize]
     public async Task<ActionResult> Put([FromBody] RecipeUpdateDto recipe)
     {
         await _recipeService.UpdateRecipeAsync(recipe);
@@ -74,6 +77,7 @@ public class RecipesController : ControllerBase
     /// </summary>
     /// <param name="id"></param>
     [HttpDelete("{id}")]
+    [Authorize]
     public async Task<ActionResult> Delete(Guid id)
     {
         await _recipeService.DeleteRecipeAsync(id);
