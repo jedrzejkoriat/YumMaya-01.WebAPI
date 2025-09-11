@@ -105,37 +105,37 @@ namespace YumMaya_01.WebAPI.Infrastructure.Migrations
                         new
                         {
                             Id = new Guid("4ee7389d-20b3-4d65-beaa-ebd8c5d984f9"),
-                            Name = "Protein"
+                            Name = "Proteinowy"
                         },
                         new
                         {
                             Id = new Guid("262d6aa6-41ee-4824-8769-07a397dbcdc0"),
-                            Name = "Vegan"
+                            Name = "Wegański"
                         },
                         new
                         {
                             Id = new Guid("462ec5fc-d3cc-4ef6-b9a2-4ec049bca6dd"),
-                            Name = "Vegetarian"
+                            Name = "Wegetariański"
                         },
                         new
                         {
                             Id = new Guid("6557296d-8bc7-495f-8c78-ed90702d7587"),
-                            Name = "Gluten-Free"
+                            Name = "Bezglutenowy"
                         },
                         new
                         {
                             Id = new Guid("20db370a-bc89-4594-a32d-f541f116d022"),
-                            Name = "Sweet"
+                            Name = "Słodki"
                         },
                         new
                         {
                             Id = new Guid("8f7bcfa2-686a-4cfd-b5e4-963d1fddc9b3"),
-                            Name = "Spicy"
+                            Name = "Ostry"
                         },
                         new
                         {
                             Id = new Guid("005d9684-7f2e-47eb-885b-027eac046e57"),
-                            Name = "Savory"
+                            Name = "Wytrawny"
                         },
                         new
                         {
@@ -146,16 +146,6 @@ namespace YumMaya_01.WebAPI.Infrastructure.Migrations
                         {
                             Id = new Guid("aa0ebb7a-3061-4b76-87b2-02ef97154bf5"),
                             Name = "Keto"
-                        },
-                        new
-                        {
-                            Id = new Guid("e475a0b8-c470-475f-a6e3-b33620628da7"),
-                            Name = "Dairy-Free"
-                        },
-                        new
-                        {
-                            Id = new Guid("c04dc859-3044-4f4f-a1cd-b49c8cf21c05"),
-                            Name = "Nut-Free"
                         });
                 });
 

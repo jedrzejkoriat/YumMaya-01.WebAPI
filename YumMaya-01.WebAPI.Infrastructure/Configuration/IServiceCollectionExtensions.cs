@@ -18,7 +18,7 @@ public static class IServiceCollectionExtensions
         return services;
     }
 
-    public static IServiceCollection AddRepositories(this IServiceCollection services)
+    public static IServiceCollection AddEfCoreRepositories(this IServiceCollection services)
     {
         services.AddScoped<IRecipeRepository, RecipeRepository>();
         services.AddScoped<ITagRepository, TagRepository>();

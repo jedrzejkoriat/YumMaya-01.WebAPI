@@ -11,7 +11,7 @@ using YumMaya_01.WebAPI.Infrastructure.Persistence;
 namespace YumMaya_01.WebAPI.Infrastructure.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20250909191053_InitialMigration")]
+    [Migration("20250910200733_InitialMigration")]
     partial class InitialMigration
     {
         /// <inheritdoc />
@@ -26,7 +26,7 @@ namespace YumMaya_01.WebAPI.Infrastructure.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("TEXT");
 
-                    b.Property<int>("CookingTime")
+                    b.Property<int?>("CookingTime")
                         .HasColumnType("INTEGER");
 
                     b.Property<DateTimeOffset>("CreatedAt")
@@ -55,7 +55,7 @@ namespace YumMaya_01.WebAPI.Infrastructure.Migrations
                         .HasMaxLength(150)
                         .HasColumnType("TEXT");
 
-                    b.Property<int>("PreparationTime")
+                    b.Property<int?>("PreparationTime")
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("PreviewImagePath")
@@ -64,7 +64,7 @@ namespace YumMaya_01.WebAPI.Infrastructure.Migrations
                     b.Property<string>("ReelUrl")
                         .HasColumnType("TEXT");
 
-                    b.Property<int>("Servings")
+                    b.Property<int?>("Servings")
                         .HasColumnType("INTEGER");
 
                     b.HasKey("Id");
@@ -103,6 +103,53 @@ namespace YumMaya_01.WebAPI.Infrastructure.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Tags");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("4ee7389d-20b3-4d65-beaa-ebd8c5d984f9"),
+                            Name = "Proteinowy"
+                        },
+                        new
+                        {
+                            Id = new Guid("262d6aa6-41ee-4824-8769-07a397dbcdc0"),
+                            Name = "Wegański"
+                        },
+                        new
+                        {
+                            Id = new Guid("462ec5fc-d3cc-4ef6-b9a2-4ec049bca6dd"),
+                            Name = "Wegetariański"
+                        },
+                        new
+                        {
+                            Id = new Guid("6557296d-8bc7-495f-8c78-ed90702d7587"),
+                            Name = "Bezglutenowy"
+                        },
+                        new
+                        {
+                            Id = new Guid("20db370a-bc89-4594-a32d-f541f116d022"),
+                            Name = "Słodki"
+                        },
+                        new
+                        {
+                            Id = new Guid("8f7bcfa2-686a-4cfd-b5e4-963d1fddc9b3"),
+                            Name = "Ostry"
+                        },
+                        new
+                        {
+                            Id = new Guid("005d9684-7f2e-47eb-885b-027eac046e57"),
+                            Name = "Wytrawny"
+                        },
+                        new
+                        {
+                            Id = new Guid("128d75d6-6184-4e24-b182-d5882805a2f2"),
+                            Name = "Fit"
+                        },
+                        new
+                        {
+                            Id = new Guid("aa0ebb7a-3061-4b76-87b2-02ef97154bf5"),
+                            Name = "Keto"
+                        });
                 });
 
             modelBuilder.Entity("YumMaya_01.WebAPI.Domain.Models.User", b =>

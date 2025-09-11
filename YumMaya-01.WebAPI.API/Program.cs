@@ -7,7 +7,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddSqliteConnection(builder.Configuration);
-builder.Services.AddRepositories();
+builder.Services.AddEfCoreRepositories();
 builder.Services.AddApplicationServices();
 builder.Services.AddApplicationMapper();
 builder.Services.AddDtoValidation();
@@ -23,9 +23,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-
 app.UseAuthorization();
-
 app.MapControllers();
 
 app.Run();
