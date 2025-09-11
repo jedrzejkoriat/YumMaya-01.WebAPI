@@ -63,4 +63,15 @@ public static class IServiceCollectionExtensions
 
         return services;
     }
+
+    public static IServiceCollection AddLogger(this IServiceCollection services)
+    {
+        services.AddLogging(builder =>
+        {
+            builder.ClearProviders();
+            builder.AddConsole();
+            builder.AddDebug();
+        });
+        return services;
+    }
 }

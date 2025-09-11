@@ -14,8 +14,8 @@ builder.Services.AddDtoValidation();
 builder.Services.AddUnitOfWork();
 builder.Services.AddRequestLimiter();
 builder.Services.AddJwtAuthentication(builder.Configuration);
-builder.Services.AddJwtAuthentication(builder.Configuration);
 builder.Services.AddSwaggerConfiguration();
+builder.Services.AddLogger();
 
 var app = builder.Build();
 

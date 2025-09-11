@@ -11,13 +11,13 @@ namespace YumMaya_01.WebAPI.Application.Auth;
 public sealed class AuthService : IAuthService
 {
     private readonly ILogger<AuthService> _logger;
-    private readonly HttpContext _context;
+    private readonly IHttpContextAccessor _context;
     private readonly IUserRepository _userRepository;
     private readonly ITokenGenerator _tokenGenerator;
 
     public AuthService(
         ILogger<AuthService> logger,
-        HttpContext context,
+        IHttpContextAccessor context,
         IUserRepository userRepository,
         ITokenGenerator tokenGenerator)
     {
@@ -29,19 +29,19 @@ public sealed class AuthService : IAuthService
 
     public async Task<string> LoginAsync(LoginDto loginDto)
     {
-        var ip = _context.Connection.RemoteIpAddress?.ToString();
+        var ip = _context.HttpContext?.Connection.RemoteIpAddress?.ToString();
         _logger.LogInformation("Login attempt started: {ip}", ip);
 
         User user = null;
 
         // Check if username is not empty
-        if (!string.IsNullOrWhiteSpace(loginDto.Username))
+        if (!string.IsNullOrEmpty(loginDto.Username))
         {
             user = await _userRepository.GetByUsernameAsync(loginDto.Username);
         }
 
         // Check if email is not empty
-        if (!string.IsNullOrWhiteSpace(loginDto.Username))
+        if (!string.IsNullOrEmpty(loginDto.Email))
         {
             user = await _userRepository.GetByEmailAsync(loginDto.Email);
         }

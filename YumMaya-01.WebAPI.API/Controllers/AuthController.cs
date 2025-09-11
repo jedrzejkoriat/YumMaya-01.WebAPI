@@ -4,8 +4,6 @@ using YumMaya_01.WebAPI.Application.Contracts.Auth;
 using YumMaya_01.WebAPI.Application.Contracts.Services;
 using YumMaya_01.WebAPI.Application.DTOs.Auth;
 
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-
 namespace YumMaya_01.WebAPI.API.Controllers;
 [Route("api/[controller]")]
 [ApiController]
