@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using YumMaya_01.WebAPI.Domain.Models;
-using YumMaya_01.WebAPI.Infrastructure.Configuration.Entities;
+using YumMaya_01.WebAPI.Infrastructure.Persistence.Entities;
 
 namespace YumMaya_01.WebAPI.Infrastructure.Persistence;
 

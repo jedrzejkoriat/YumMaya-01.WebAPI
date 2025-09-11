@@ -32,7 +32,7 @@ public class ExceptionHandlerMiddleware
         }
         catch (NotFoundException ex)
         {
-            _logger.LogInformation(ex, "Resource not found at {Path}", context.Request.Path);
+            _logger.LogWarning(ex, "Resource not found at {Path}", context.Request.Path);
             await HandleExceptionAsync(context, HttpStatusCode.NotFound, "Resource Not Found", "The requested resource could not be found.");
         }
         catch (OperationFailedException ex)

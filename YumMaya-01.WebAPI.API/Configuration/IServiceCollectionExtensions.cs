@@ -1,5 +1,4 @@
 ﻿using System.Threading.RateLimiting;
-using Microsoft.AspNetCore.RateLimiting;
 
 namespace YumMaya_01.WebAPI.API.Configuration;
 
