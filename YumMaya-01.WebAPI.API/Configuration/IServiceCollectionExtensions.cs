@@ -1,4 +1,6 @@
-﻿using System.Threading.RateLimiting;
+﻿using System.Reflection;
+using System.Threading.RateLimiting;
+using Microsoft.OpenApi.Models;
 
 namespace YumMaya_01.WebAPI.API.Configuration;
 
@@ -22,6 +24,41 @@ public static class IServiceCollectionExtensions
                         QueueLimit = 0
                     });
             });
+        });
+
+        return services;
+    }
+
+    public static IServiceCollection AddSwaggerConfiguration(this IServiceCollection services)
+    {
+        services.AddEndpointsApiExplorer();
+        services.AddSwaggerGen(c =>
+        {
+            var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+            var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+            c.IncludeXmlComments(xmlPath);
+            c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+            {
+                Name = "Authorize",
+                Type = SecuritySchemeType.Http,
+                Scheme = "Bearer",
+                BearerFormat = "JWT",
+                In = ParameterLocation.Header
+            });
+            c.AddSecurityRequirement(new OpenApiSecurityRequirement
+            {
+                {
+                    new OpenApiSecurityScheme
+                    {
+                        Reference = new OpenApiReference
+                        {
+                            Type=ReferenceType.SecurityScheme,
+                            Id = "Bearer"
+                        }
+                    },
+                    new string[] {}
+                }
+             });
         });
 
         return services;

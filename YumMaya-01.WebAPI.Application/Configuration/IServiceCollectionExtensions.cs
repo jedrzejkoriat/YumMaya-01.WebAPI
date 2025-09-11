@@ -2,6 +2,8 @@
 using FluentValidation.AspNetCore;
 using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
+using YumMaya_01.WebAPI.Application.Auth;
+using YumMaya_01.WebAPI.Application.Contracts.Auth;
 using YumMaya_01.WebAPI.Application.Contracts.Services;
 using YumMaya_01.WebAPI.Application.Services;
 
@@ -28,6 +30,7 @@ public static class IServiceCollectionExtensions
         services.AddScoped<IRecipeService, RecipeService>();
         services.AddScoped<ITagService, TagService>();
         services.AddScoped<IRecipeTagService, RecipeTagService>();
+        services.AddScoped<IAuthService, AuthService>();
 
         return services;
     }

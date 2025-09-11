@@ -6,8 +6,6 @@ using YumMaya_01.WebAPI.Infrastructure.Configuration;
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
 builder.Services.AddSqliteConnection(builder.Configuration);
 builder.Services.AddEfCoreRepositories();
 builder.Services.AddApplicationServices();
@@ -15,6 +13,9 @@ builder.Services.AddApplicationMapper();
 builder.Services.AddDtoValidation();
 builder.Services.AddUnitOfWork();
 builder.Services.AddRequestLimiter();
+builder.Services.AddJwtAuthentication(builder.Configuration);
+builder.Services.AddJwtAuthentication(builder.Configuration);
+builder.Services.AddSwaggerConfiguration();
 
 var app = builder.Build();
 

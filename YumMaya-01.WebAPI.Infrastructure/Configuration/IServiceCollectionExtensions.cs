@@ -1,8 +1,13 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using System.Text;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.IdentityModel.Tokens;
+using YumMaya_01.WebAPI.Application.Contracts.Auth;
 using YumMaya_01.WebAPI.Application.Contracts.Persistence;
 using YumMaya_01.WebAPI.Application.Contracts.Persistence.Repositories;
+using YumMaya_01.WebAPI.Infrastructure.Auth;
 using YumMaya_01.WebAPI.Infrastructure.Persistence;
 using YumMaya_01.WebAPI.Infrastructure.Persistence.Repositories;
 
@@ -23,6 +28,7 @@ public static class IServiceCollectionExtensions
         services.AddScoped<IRecipeRepository, RecipeRepository>();
         services.AddScoped<ITagRepository, TagRepository>();
         services.AddScoped<IRecipeTagRepository, RecipeTagRepository>();
+        services.AddScoped<IUserRepository, UserRepository>();
 
         return services;
     }
@@ -30,6 +36,43 @@ public static class IServiceCollectionExtensions
     public static IServiceCollection AddUnitOfWork(this IServiceCollection services)
     {
         services.AddScoped<IUnitOfWork, EfUnitOfWork>();
+
+        return services;
+    }
+
+    public static IServiceCollection AddJwtAuthentication(this IServiceCollection services, IConfiguration config)
+    {
+        services.AddScoped<ITokenGenerator, JwtTokenGenerator>();
+
+        services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+            .AddJwtBearer(options =>
+            {
+                options.Events = new JwtBearerEvents
+                {
+                    OnMessageReceived = context =>
+                    {
+                        var accessToken = context.Request.Query["access_token"];
+
+                        var path = context.HttpContext.Request.Path;
+                        if (!string.IsNullOrEmpty(accessToken) && path.StartsWithSegments("/hubs/tickets"))
+                        {
+                            context.Token = accessToken;
+                        }
+                        return Task.CompletedTask;
+                    }
+                };
+
+                options.TokenValidationParameters = new TokenValidationParameters
+                {
+                    ValidateIssuer = true,
+                    ValidateAudience = true,
+                    ValidateLifetime = true,
+                    ValidateIssuerSigningKey = true,
+                    ValidIssuer = config["Jwt:Issuer"],
+                    ValidAudience = config["Jwt:Audience"],
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(config["Jwt:Key"]!))
+                };
+            });
 
         return services;
     }

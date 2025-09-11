@@ -16,11 +16,11 @@ public class TagsController : ControllerBase
         _tagService = tagService;
     }
 
+    // GET: api/tags
     /// <summary>
     /// Get Tags
     /// </summary>
     /// <returns>List of Tags</returns>
-    // GET: api/tags
     [HttpGet]
     public async Task<ActionResult<IEnumerable<TagDto>>> Get()
     {
