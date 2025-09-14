@@ -15,8 +15,7 @@ public sealed class Recipe
     public int? Servings { get; set; }
     public Difficulty Difficulty { get; set; }
     public DateTimeOffset CreatedAt { get; set; }
-    public string? MainImagePath { get; set; }
-    public string? PreviewImagePath { get; set; }
+    public string? ImagePath { get; set; }
     public string? ReelUrl { get; set; }
     public ICollection<RecipeTag> RecipeTags { get; set; } = new List<RecipeTag>();
     [NotMapped]
