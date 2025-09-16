@@ -4,11 +4,11 @@ using YumMaya_01.WebAPI.Domain.Models;
 
 namespace YumMaya_01.WebAPI.Infrastructure.Persistence.Repositories;
 
-public sealed class RecipeTagRepository : IRecipeTagRepository
+public sealed class RecipeTagRepository : GenericRepository<RecipeTag>, IRecipeTagRepository
 {
     private readonly AppDbContext _context;
 
-    public RecipeTagRepository(AppDbContext context)
+    public RecipeTagRepository(AppDbContext context) : base(context)
     {
         _context = context;
     }
@@ -25,11 +25,5 @@ public sealed class RecipeTagRepository : IRecipeTagRepository
         return await _context.Set<RecipeTag>()
             .Where(rt => rt.TagId == tagId && rt.RecipeId == recipeId)
             .ExecuteDeleteAsync() > 0;
-    }
-
-    public async Task<bool> AddAsync(RecipeTag recipeTag)
-    {
-        await _context.AddAsync(recipeTag);
-        return await _context.SaveChangesAsync() > 0;
     }
 }

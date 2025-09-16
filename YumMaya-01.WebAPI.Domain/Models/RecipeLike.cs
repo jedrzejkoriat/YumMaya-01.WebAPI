@@ -5,4 +5,6 @@ public sealed class RecipeLike
     public Guid Id { get; set; }
     public Guid RecipeId { get; set; }
     public string IpAddress { get; set; }
+    public Recipe Recipe { get; set; }
+    public DateTimeOffset LikedAt { get; set; }
 }

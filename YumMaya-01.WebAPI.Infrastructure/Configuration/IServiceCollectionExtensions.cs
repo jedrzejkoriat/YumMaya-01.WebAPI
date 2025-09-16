@@ -30,6 +30,8 @@ public static class IServiceCollectionExtensions
         services.AddScoped<IRecipeTagRepository, RecipeTagRepository>();
         services.AddScoped<IUserRepository, UserRepository>();
 
+        services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
+
         return services;
     }
 

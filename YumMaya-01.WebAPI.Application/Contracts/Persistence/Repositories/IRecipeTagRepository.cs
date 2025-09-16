@@ -2,9 +2,8 @@
 
 namespace YumMaya_01.WebAPI.Application.Contracts.Persistence.Repositories;
 
-public interface IRecipeTagRepository
+public interface IRecipeTagRepository : IGenericRepository<RecipeTag>
 {
     Task<IEnumerable<RecipeTag>> GetByRecipeIdAsync(Guid recipeId);
     Task<bool> DeleteAsync(Guid tagId, Guid recipeId);
-    Task<bool> AddAsync(RecipeTag recipeTag);
 }

@@ -1,6 +1,6 @@
 ﻿namespace YumMaya_01.WebAPI.Domain.Models;
 
-public sealed class NewsletterUser
+public sealed class NewsletterSubscriber
 {
     public Guid Id { get; set; }
     public string Email { get; set; }

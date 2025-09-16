@@ -4,17 +4,7 @@ using YumMaya_01.WebAPI.Domain.Models;
 using YumMaya_01.WebAPI.Infrastructure.Persistence;
 
 namespace YumMaya_01.WebAPI.Infrastructure.Persistence.Repositories;
-public sealed class TagRepository : ITagRepository
+public sealed class TagRepository : GenericRepository<Tag>, ITagRepository
 {
-    private readonly AppDbContext _context;
-
-    public TagRepository(AppDbContext context)
-    {
-        _context = context;
-    }
-
-    public async Task<IEnumerable<Tag>> GetAllAsync()
-    {
-        return await _context.Set<Tag>().ToListAsync();
-    }
+    public TagRepository(AppDbContext context) : base(context) { }
 }

@@ -2,7 +2,6 @@
 
 namespace YumMaya_01.WebAPI.Application.Contracts.Persistence.Repositories;
 
-public interface ITagRepository
+public interface ITagRepository : IGenericRepository<Tag>
 {
-    Task<IEnumerable<Tag>> GetAllAsync();
 }
