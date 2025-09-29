@@ -2,6 +2,6 @@
 
 namespace YumMaya_01.WebAPI.Application.Contracts.Persistence.Repositories;
 
-public interface IRecipeRepository : IGenericRepository<Recipe>
+public interface IRecipeRepository : IReadRepository<Recipe>, IWriteRepository<Recipe>
 {
 }

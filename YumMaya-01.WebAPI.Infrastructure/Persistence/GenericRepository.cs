@@ -3,7 +3,7 @@ using YumMaya_01.WebAPI.Application.Contracts.Persistence;
 
 namespace YumMaya_01.WebAPI.Infrastructure.Persistence;
 
-public class GenericRepository<T> : IGenericRepository<T> where T : class
+public class GenericRepository<T> : IReadRepository<T>, IWriteRepository<T> where T : class
 {
     private readonly AppDbContext _context;
 

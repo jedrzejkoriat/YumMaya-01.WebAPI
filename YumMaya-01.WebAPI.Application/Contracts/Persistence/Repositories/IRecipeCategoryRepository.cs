@@ -2,6 +2,6 @@
 
 namespace YumMaya_01.WebAPI.Application.Contracts.Persistence.Repositories;
 
-public interface IRecipeCategoryRepository : IGenericRepository<RecipeCategory>
+public interface IRecipeCategoryRepository : IReadRepository<RecipeCategory>, IWriteRepository<RecipeCategory>
 {
 }

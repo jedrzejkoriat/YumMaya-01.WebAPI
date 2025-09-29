@@ -29,8 +29,16 @@ public static class IServiceCollectionExtensions
         services.AddScoped<ITagRepository, TagRepository>();
         services.AddScoped<IRecipeTagRepository, RecipeTagRepository>();
         services.AddScoped<IUserRepository, UserRepository>();
+        services.AddScoped<ICategoryRepository, CategoryRepository>();
+        services.AddScoped<ICommentReplyRepository, CommentReplyRepository>();
+        services.AddScoped<ICommentRepository, CommentRepository>();
+        services.AddScoped<INewsletterSubscriberRepository, NewsletterSubscriberRepository>();
+        services.AddScoped<INotificationRepository, NotificationRepository>();
+        services.AddScoped<IRecipeCategoryRepository, RecipeCategoryRepository>();
+        services.AddScoped<IRecipeLikeRepository, RecipeLikeRepository>();
 
-        services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
+        services.AddScoped(typeof(IReadRepository<>), typeof(ReadRepository<>));
+        services.AddScoped(typeof(IWriteRepository<>), typeof(WriteRepository<>));
 
         return services;
     }

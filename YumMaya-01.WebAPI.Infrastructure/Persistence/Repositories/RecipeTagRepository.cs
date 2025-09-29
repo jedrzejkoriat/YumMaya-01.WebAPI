@@ -4,7 +4,7 @@ using YumMaya_01.WebAPI.Domain.Models;
 
 namespace YumMaya_01.WebAPI.Infrastructure.Persistence.Repositories;
 
-public sealed class RecipeTagRepository : GenericRepository<RecipeTag>, IRecipeTagRepository
+internal sealed class RecipeTagRepository : GenericRepository<RecipeTag>, IRecipeTagRepository
 {
     private readonly AppDbContext _context;
 

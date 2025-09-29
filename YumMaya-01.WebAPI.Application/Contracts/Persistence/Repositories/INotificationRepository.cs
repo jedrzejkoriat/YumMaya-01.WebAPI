@@ -2,6 +2,6 @@
 
 namespace YumMaya_01.WebAPI.Application.Contracts.Persistence.Repositories;
 
-public interface INotificationRepository : IGenericRepository<Notification>
+public interface INotificationRepository : IReadRepository<Notification>, IWriteRepository<Notification>
 {
 }

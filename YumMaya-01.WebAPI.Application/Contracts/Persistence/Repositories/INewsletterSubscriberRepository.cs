@@ -2,6 +2,6 @@
 
 namespace YumMaya_01.WebAPI.Application.Contracts.Persistence.Repositories;
 
-public interface INewsletterSubscriberRepository : IGenericRepository<NewsletterSubscriber>
+public interface INewsletterSubscriberRepository : IReadRepository<NewsletterSubscriber>, IWriteRepository<NewsletterSubscriber>
 {
 }

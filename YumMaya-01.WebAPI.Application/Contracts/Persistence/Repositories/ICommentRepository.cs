@@ -2,6 +2,6 @@
 
 namespace YumMaya_01.WebAPI.Application.Contracts.Persistence.Repositories;
 
-public interface ICommentRepository : IGenericRepository<Comment>
+public interface ICommentRepository : IReadRepository<Comment>, IWriteRepository<Comment>
 {
 }

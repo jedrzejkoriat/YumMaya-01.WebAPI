@@ -4,7 +4,7 @@ using YumMaya_01.WebAPI.Domain.Models;
 
 namespace YumMaya_01.WebAPI.Infrastructure.Persistence.Repositories;
 
-public sealed class UserRepository : IUserRepository
+internal sealed class UserRepository : IUserRepository
 {
     private readonly AppDbContext _context;
 
