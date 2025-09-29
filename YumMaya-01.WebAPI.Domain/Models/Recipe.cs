@@ -14,6 +14,7 @@ public sealed class Recipe
     public int CookingTime { get; set; }
     public int Servings { get; set; }
     public Difficulty Difficulty { get; set; }
+    public Status Status { get; set; }
     public DateTimeOffset CreatedAt { get; set; }
     public string? ImagePath { get; set; }
     public string? ReelUrl { get; set; }
