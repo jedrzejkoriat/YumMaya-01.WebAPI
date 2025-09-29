@@ -2,7 +2,10 @@
 using YumMaya_01.WebAPI.Domain.Models;
 
 namespace YumMaya_01.WebAPI.Infrastructure.Persistence.Repositories;
-public sealed class TagRepository : GenericRepository<Tag>, ITagRepository
+
+public sealed class CommentRepository : GenericRepository<Comment>, ICommentRepository
 {
-    public TagRepository(AppDbContext context) : base(context) { }
+    public CommentRepository(AppDbContext context) : base(context)
+    {
+    }
 }
