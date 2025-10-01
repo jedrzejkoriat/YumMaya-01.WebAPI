@@ -18,6 +18,8 @@ internal sealed class RecipeRepository : GenericRepository<Recipe>, IRecipeRepos
         return await _context.Set<Recipe>()
             .Include(r => r.RecipeTags)
             .ThenInclude(rt => rt.Tag)
+            .Include(r => r.RecipeCategories)
+            .ThenInclude(rc => rc.Category)
             .ToListAsync();
     }
 
@@ -26,6 +28,8 @@ internal sealed class RecipeRepository : GenericRepository<Recipe>, IRecipeRepos
         return await _context.Set<Recipe>()
             .Include(r => r.RecipeTags)
             .ThenInclude(rt => rt.Tag)
+            .Include(r => r.RecipeCategories)
+            .ThenInclude(rc => rc.Category)
             .FirstOrDefaultAsync(r => r.Id == id);
     }
 }

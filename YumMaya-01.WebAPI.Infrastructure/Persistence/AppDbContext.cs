@@ -127,7 +127,7 @@ public sealed class AppDbContext : DbContext
 
         // RecipeCategory entity configuration
         builder.Entity<RecipeCategory>()
-            .HasKey(rt => new { rt.RecipeId, rt.TypeId });
+            .HasKey(rt => new { rt.RecipeId, rt.CategoryId });
 
         builder.Entity<RecipeCategory>()
             .HasOne(rt => rt.Recipe)
@@ -138,7 +138,7 @@ public sealed class AppDbContext : DbContext
         builder.Entity<RecipeCategory>()
             .HasOne(rt => rt.Category)
             .WithMany(t => t.RecipeCategories)
-            .HasForeignKey(rt => rt.TypeId)
+            .HasForeignKey(rt => rt.CategoryId)
             .OnDelete(DeleteBehavior.Cascade);
 
         // RecipeLike entity configuration
