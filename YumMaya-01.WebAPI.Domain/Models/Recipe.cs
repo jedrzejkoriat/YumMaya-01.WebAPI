@@ -19,6 +19,7 @@ public sealed class Recipe
     public string? ImagePath { get; set; }
     public string? ReelUrl { get; set; }
     public bool IsArchived { get; set; }
+    public int LikesCount { get; set; }
     public IEnumerable<Comment> Comments { get; set; } = new List<Comment>();
     [NotMapped]
     public IEnumerable<Tag> Tags => RecipeTags.Select(rt => rt.Tag);

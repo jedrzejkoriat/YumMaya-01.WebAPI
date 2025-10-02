@@ -5,6 +5,7 @@ using YumMaya_01.WebAPI.Application.Contracts.Persistence;
 using YumMaya_01.WebAPI.Application.Contracts.Persistence.Repositories;
 using YumMaya_01.WebAPI.Application.Contracts.Services;
 using YumMaya_01.WebAPI.Application.DTOs.Recipes;
+using YumMaya_01.WebAPI.Domain.Enums;
 using YumMaya_01.WebAPI.Domain.Models;
 
 namespace YumMaya_01.WebAPI.Application.Services;
@@ -38,6 +39,8 @@ public sealed class RecipeService : IRecipeService
         var recipe = _mapper.Map<Recipe>(recipeCreateDto);
         recipe.Id = Guid.NewGuid();
         recipe.CreatedAt = DateTimeOffset.UtcNow;
+        recipe.LikesCount = 0;
+        recipe.Status = Status.Active;
 
         // Check if operation is successful
         if (!await _recipeRepository.AddAsync(recipe))
